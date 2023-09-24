@@ -43,19 +43,4 @@ export class UsersService {
       throw new InternalServerErrorException(err.message);
     }
   }
-
-  /* 
-  async findAll(): Promise<User[]> {
-    const users = await this.userModel.find();
-    return users;
-  }
-
-  async findOne(username: string): Promise<User | undefined> {
-    return this.userModel.findOne({ username });
-  }
-
-  async getUser(query: object): Promise<User> {
-    return this.userModel.findOne(query);
-  } 
-  */
 }
