@@ -1,31 +1,26 @@
-import {
-  Body,
-  Controller,
-  Post,
-  HttpCode,
-  HttpStatus,
-  UseGuards,
-  Get,
-  Request,
-} from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Body, Controller, Post, HttpStatus } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
 import { Public } from './auth.decorator';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { LoginDto } from 'src/users/dto/login.dto';
+import { ApiResponse } from '@nestjs/swagger';
 
-@Controller('auth')
+@Controller('api')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @ApiResponse({ status: HttpStatus.OK, description: `return user data and token` })
   @Public()
-  @HttpCode(HttpStatus.OK)
   @Post('login')
-  signIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.signIn(signInDto.username, signInDto.password);
+  login(@Body() loginDto: LoginDto) {
+    return this.authService.login(loginDto);
   }
 
-  @UseGuards(AuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
+  @ApiResponse({ status: HttpStatus.CREATED, description: `return user data` })
+  @Public()
+  @Post('register')
+  register(@Body() createUserDto: CreateUserDto) {
+    return this.authService.register(createUserDto);
   }
 }
