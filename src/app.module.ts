@@ -1,5 +1,5 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { APP_GUARD, RouterModule } from '@nestjs/core';
+import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LoggerMiddleware } from './logger.middleware';
@@ -18,7 +18,13 @@ import { AuthGuard } from './auth/auth.guard';
       envFilePath: '.env',
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.DB_URL),
+    MongooseModule.forRoot(process.env.DATABASE_URI, {
+      dbName: process.env.DATABASE_NAME,
+      auth: {
+        username: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASS,
+      },
+    }),
     ProfilesModule,
     UserModule,
     AuthModule,

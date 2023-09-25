@@ -1,39 +1,51 @@
-Create Company
-url : http://localhost:3000/company
-method : POST
-body : {
-    "uuid":"uuid1",
-    "name":"digital",
-    "ceo":"mukeash",
-    "inceptionDate":"23/06/2023"
-}
+## How to use
 
-Get Company
-url : http://localhost:3000/company
-method : GET
+Install dependencies
 
-Get Company By Id
-url : http://localhost:3000/company/649835bb6dad7924d175e90f
-method : GET
+```bash
+$ npm install
+```
 
-Create Team
-url : http://localhost:3000/teams
-method : POST
-body : {
-    "uuid":"uuid1",
-    "teamLeadName":"digital",
-    "address":"india",
-    "inceptionDate":"23/06/2023",
-    "companyId":"649835bb6dad7924d175e90f"
-}
+Run docker container in development mode
 
+```bash
+$ npm run docker:dev
+```
 
-Get Teams group by company id
-url:http://localhost:3000/teams/group-by-company
-method : GET
+or
 
-nest g resource users
-nest g module users
-nest g service users
-nest g controller users
+```bash
+$ docker-compose up
+```
 
+Create and run docker container on production
+
+```bash
+$ docker build -t app-name . && docker run app-name -p 8080:3000
+```
+
+## Running the app without Docker
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
