@@ -1,5 +1,12 @@
 import { Types } from 'mongoose';
-import { IsInt, IsNotEmpty } from 'class-validator';
+import {
+  IsArray,
+  IsInt,
+  IsNotEmpty,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProfileDto {
@@ -17,12 +24,24 @@ export class CreateProfileDto {
   @IsNotEmpty()
   readonly gender: string;
 
-  @IsInt()
+  @ApiProperty({
+    type: Number,
+    description: 'Min value 10, Max value 300',
+  })
   @IsNotEmpty()
+  @IsInt()
+  @Min(10)
+  @Max(300)
   readonly height: number;
 
-  @IsInt()
+  @ApiProperty({
+    type: Number,
+    description: 'Min value 10, Max value 300',
+  })
   @IsNotEmpty()
+  @IsInt()
+  @Min(10)
+  @Max(300)
   readonly weight: number;
 
   @ApiProperty({
@@ -51,5 +70,21 @@ export class CreateProfileDto {
   @IsNotEmpty()
   readonly zodiac: string;
 
-  // readonly horoscope: string;
+  @ApiProperty({
+    type: String,
+    description: `if want empty string you can use 'horoscope: ""'`,
+    example: '',
+  })
+  @IsString() // still allowed empty string
+  readonly horoscope: string;
+
+  @ApiProperty({
+    type: Array,
+    description: `if want empty array you can use 'interests: []'`,
+    example: [],
+  })
+  @IsArray()
+  @IsString({ each: true }) // prevent non string in each array
+  @IsNotEmpty({ each: true }) // prevent empty string in each array
+  readonly interests: string[];
 }

@@ -38,8 +38,11 @@ export class Profile {
   @Prop({ enum: ZODIAC_ENUM, required: true })
   zodiac: string;
 
-  // @Prop({ required: false })
-  // horoscope: HOROSCOPE_ENUM;
+  @Prop({ required: false })
+  horoscope: string;
+
+  @Prop({ required: false })
+  interests: string[];
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);

@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsInt } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsInt,
+  IsString,
+  IsArray,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class UpdateProfileDto {
   @IsNotEmpty()
@@ -9,12 +16,24 @@ export class UpdateProfileDto {
   @IsNotEmpty()
   readonly gender: string;
 
-  @IsInt()
+  @ApiProperty({
+    type: Number,
+    description: 'Min value 10, Max value 300',
+  })
   @IsNotEmpty()
+  @IsInt()
+  @Min(10)
+  @Max(300)
   readonly height: number;
 
-  @IsInt()
+  @ApiProperty({
+    type: Number,
+    description: 'Min value 10, Max value 300',
+  })
   @IsNotEmpty()
+  @IsInt()
+  @Min(10)
+  @Max(300)
   readonly weight: number;
 
   @ApiProperty({
@@ -42,4 +61,22 @@ export class UpdateProfileDto {
   })
   @IsNotEmpty()
   readonly zodiac: string;
+
+  @ApiProperty({
+    type: String,
+    description: `if want empty string you can use 'horoscope: ""'`,
+    example: '',
+  })
+  @IsString() // still allowed empty string
+  readonly horoscope: string;
+
+  @ApiProperty({
+    type: Array,
+    description: `if want empty array you can use 'interests: []'`,
+    example: [],
+  })
+  @IsArray()
+  @IsString({ each: true }) // prevent non string in each array
+  @IsNotEmpty({ each: true }) // prevent empty string in each array
+  readonly interests: string[];
 }
