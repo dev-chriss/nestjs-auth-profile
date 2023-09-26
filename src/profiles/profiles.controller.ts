@@ -21,12 +21,12 @@ export class ProfilesController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'profile id', 
+    description: 'UserId / Owner of this profile', 
   })
   @ApiResponse({ status: HttpStatus.OK, description: `return profile data` })
   @Get('getProfile/:id')
   findOne(@Param() id: string) {
-    return this.profilesService.findOne(id);
+    return this.profilesService.findByUserId(id);
   }
 
   @ApiBearerAuth()
@@ -40,11 +40,11 @@ export class ProfilesController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'profile id', 
+    description: 'UserId / Owner of this profile', 
   })
   @ApiResponse({ status: HttpStatus.OK, description: `return profile data` })
   @Put('updateProfile/:id')
   update(@Param() id: string, @Body() updateProfileDto: UpdateProfileDto) {
-    return this.profilesService.update(id, updateProfileDto);
+    return this.profilesService.updateByUserId(id, updateProfileDto);
   }
 }

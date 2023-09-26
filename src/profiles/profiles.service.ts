@@ -1,4 +1,4 @@
-import mongoose, { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import {
   BadRequestException,
   Injectable,
@@ -16,19 +16,45 @@ export class ProfilesService {
     @InjectModel(Profile.name) private profileModel: Model<Profile>,
   ) {}
 
-  async findAll(): Promise<Profile[]> {
-    const profiles = await this.profileModel.find();
-    return profiles;
-  }
-
-  async findOne(id: string) {
-    const profile = await this.profileModel.findById(
-      new mongoose.Types.ObjectId(id),
-    );
+  async findByUserId(userId: string): Promise<Profile> {
+    const profile = await this.profileModel.findOne({
+      userId: new Types.ObjectId(userId),
+    });
     if (!profile) {
-      throw new NotFoundException(`Profile not found`);
+      throw new NotFoundException(`User not found`);
     }
     return profile;
+  }
+
+  async updateByUserId(
+    id: string,
+    updateProfileDto: UpdateProfileDto,
+  ): Promise<Profile> {
+    try {
+      // assume backend will receive zodiac field from frontend, we need to validate
+      const isZodiacMatch: boolean = checkZodiac(
+        updateProfileDto.birthday,
+        updateProfileDto.zodiac,
+      );
+
+      if (!isZodiacMatch) {
+        throw new BadRequestException(
+          'Zodiac field is not match with the birthday date',
+        );
+      }
+      const profile = await this.profileModel.findOneAndUpdate(
+        { userId: new Types.ObjectId(id) },
+        updateProfileDto,
+        { new: true, runValidators: true },
+      );
+
+      if (!profile) {
+        throw new NotFoundException(`User not found`);
+      }
+      return profile;
+    } catch (err) {
+      throw new BadRequestException(err.message);
+    }
   }
 
   async create(createProfileDto: CreateProfileDto): Promise<Profile> {
@@ -52,39 +78,8 @@ export class ProfilesService {
     }
   }
 
-  async update(
-    id: string,
-    updateProfileDto: UpdateProfileDto,
-  ): Promise<Profile> {
-    try {
-      // assume backend will receive zodiac field from frontend, we need to validate
-      const isZodiacMatch: boolean = checkZodiac(
-        updateProfileDto.birthday,
-        updateProfileDto.zodiac,
-      );
-
-      if (!isZodiacMatch) {
-        throw new BadRequestException(
-          'Zodiac field is not match with the birthday date',
-        );
-      }
-
-      const profile = await this.profileModel.findByIdAndUpdate(
-        new mongoose.Types.ObjectId(id),
-        updateProfileDto,
-        { new: true, runValidators: true },
-      );
-
-      if (!profile) {
-        throw new NotFoundException(`Profile not found`);
-      }
-      return profile;
-    } catch (err) {
-      throw new BadRequestException(err.message);
-    }
-  }
-
-  async remove(id: string) {
-    return this.profileModel.findByIdAndRemove(new mongoose.Types.ObjectId(id));
+  async findAll(): Promise<Profile[]> {
+    const profiles = await this.profileModel.find();
+    return profiles;
   }
 }

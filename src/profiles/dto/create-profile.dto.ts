@@ -12,7 +12,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateProfileDto {
   @ApiProperty({
     type: String,
-    description: 'UserId whos have this profile',
+    description: 'UserId / Owner of this profile',
   })
   @IsNotEmpty()
   readonly userId: Types.ObjectId;
