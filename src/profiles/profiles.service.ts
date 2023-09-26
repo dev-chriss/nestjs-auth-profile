@@ -8,7 +8,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Profile } from '../schemas/profile.schema';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
-import { checkZodiac } from 'src/utils/zodiacValidator';
+import { checkZodiac } from '../utils/zodiacValidator';
 
 @Injectable()
 export class ProfilesService {

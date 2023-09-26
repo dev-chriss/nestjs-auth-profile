@@ -3,7 +3,7 @@ import { Body, Controller, Post, HttpStatus } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public } from './auth.decorator';
 import { CreateUserDto } from '../users/dto/create-user.dto';
-import { LoginDto } from 'src/users/dto/login.dto';
+import { LoginDto } from '../users/dto/login.dto';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('api')

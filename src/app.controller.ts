@@ -1,6 +1,6 @@
 import { Controller, HttpCode, HttpStatus, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Public } from 'src/auth/auth.decorator';
+import { Public } from './auth/auth.decorator';
 
 @Controller('api')
 export class AppController {
