@@ -1,9 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { HydratedDocument } from 'mongoose';
-import { User } from './user.schema';
+import mongoose from 'mongoose';
 import { GENDER_ENUM, ZODIAC_ENUM } from '../constant/profiles.enum';
-
-export type ProfileDocument = HydratedDocument<User>;
 
 @Schema({ timestamps: true })
 export class Profile {
@@ -31,7 +28,6 @@ export class Profile {
   @Prop({ required: true })
   weight: number;
 
-  // date is following what is frontend use
   @Prop({ required: true })
   birthday: string;
 

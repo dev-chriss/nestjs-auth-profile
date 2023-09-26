@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from '../schemas/user.schema';
@@ -23,16 +23,14 @@ export class UsersService {
       });
       return user;
     } catch (err) {
-      throw new InternalServerErrorException(err.message);
+      throw new BadRequestException(err.message);
     }
   }
 
   async find(keyword: string): Promise<User | undefined> {
     try {
       if (!keyword) {
-        throw new InternalServerErrorException(
-          `Username or Email is required.`,
-        );
+        throw new BadRequestException(`Username or Email is required.`);
       }
       // username and email is unique fields, there will be no duplication
       const result = this.userModel.findOne({
@@ -40,7 +38,7 @@ export class UsersService {
       });
       return result;
     } catch (err) {
-      throw new InternalServerErrorException(err.message);
+      throw new BadRequestException(err.message);
     }
   }
 }

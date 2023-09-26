@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
@@ -20,7 +16,7 @@ export class AuthService {
   async login(loginDto: LoginDto): Promise<any> {
     const user = await this.usersService.find(loginDto.keyword);
     if (!user) {
-      throw new InternalServerErrorException('Username or Email is not found.');
+      throw new NotFoundException('Username or Email is not found.');
     }
 
     const passwordValid = await bcrypt.compare(
@@ -28,7 +24,7 @@ export class AuthService {
       user.password,
     );
     if (!passwordValid) {
-      throw new UnauthorizedException(
+      throw new NotFoundException(
         'Username, Email or Password does not match.',
       );
     }

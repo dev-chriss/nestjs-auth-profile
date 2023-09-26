@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
-
-export type UserDocument = User & Document;
+import mongoose from 'mongoose';
 
 @Schema()
 export class User {
@@ -25,7 +23,7 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.set('toJSON', {
-  transform: (doc, ret, opt) => {
+  transform: (doc, ret) => {
     delete ret.password;
     return ret;
   },

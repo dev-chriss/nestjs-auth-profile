@@ -1,7 +1,7 @@
 import mongoose, { Model } from 'mongoose';
 import {
+  BadRequestException,
   Injectable,
-  InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -40,7 +40,7 @@ export class ProfilesService {
       );
 
       if (!isZodiacMatch) {
-        throw new InternalServerErrorException(
+        throw new BadRequestException(
           'Zodiac field is not match with the birthday date',
         );
       }
@@ -48,7 +48,7 @@ export class ProfilesService {
       const profile = new this.profileModel(createProfileDto);
       return await profile.save();
     } catch (err) {
-      throw new InternalServerErrorException(err.message);
+      throw new BadRequestException(err.message);
     }
   }
 
@@ -64,7 +64,7 @@ export class ProfilesService {
       );
 
       if (!isZodiacMatch) {
-        throw new InternalServerErrorException(
+        throw new BadRequestException(
           'Zodiac field is not match with the birthday date',
         );
       }
@@ -80,7 +80,7 @@ export class ProfilesService {
       }
       return profile;
     } catch (err) {
-      throw new InternalServerErrorException(err.message);
+      throw new BadRequestException(err.message);
     }
   }
 
