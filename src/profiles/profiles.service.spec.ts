@@ -34,7 +34,7 @@ class serviceMock {
 describe('ProfilesService', () => {
   let profileService: ProfilesService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const serviceProvider = {
       provide: ProfilesService,
       useClass: serviceMock,
@@ -87,5 +87,4 @@ describe('ProfilesService', () => {
     );
     expect(received).toEqual(expectedResult);
   });
-
 });
