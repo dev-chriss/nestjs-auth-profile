@@ -34,10 +34,10 @@ export class Profile {
   @Prop({ enum: ZODIAC_ENUM, required: true })
   zodiac: string;
 
-  @Prop({ required: false })
+  @Prop({ required: false, default: '' })
   horoscope: string;
 
-  @Prop({ required: false })
+  @Prop({ required: false, default: [] })
   interests: string[];
 }
 

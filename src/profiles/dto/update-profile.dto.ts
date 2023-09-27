@@ -72,7 +72,7 @@ export class UpdateProfileDto {
 
   @ApiProperty({
     type: Array,
-    description: `if want empty array you can use 'interests: []'`,
+    description: `if want empty array you can use [] as value`,
     example: [],
   })
   @IsArray()
