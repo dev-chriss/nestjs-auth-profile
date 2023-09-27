@@ -42,3 +42,12 @@ export class Profile {
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);
+
+ProfileSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    delete ret['__v'];
+    delete ret['createdAt'];
+    delete ret['updatedAt'];
+    return ret;
+  },
+});
