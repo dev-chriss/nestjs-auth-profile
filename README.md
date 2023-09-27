@@ -4,7 +4,7 @@
 # install dependencies
 $ npm install
 
-# copy .env.exampple to .env and fill the env settings
+# copy .env.example to .env and update the env settings
 $ cp .env.example .env
 
 # run on development

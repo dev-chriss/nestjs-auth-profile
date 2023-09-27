@@ -6,7 +6,7 @@ import { Profile, ProfileSchema } from '../schemas/profile.schema';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 
-// using fake database in RAM for testing
+// using database in RAM for testing
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Connection, connect, Model, Types } from 'mongoose';
 
@@ -30,8 +30,7 @@ describe('ProfilesController', () => {
 
   beforeAll(async () => {
     mongod = await MongoMemoryServer.create();
-    const uri = mongod.getUri();
-    mongoConnection = (await connect(uri)).connection;
+    mongoConnection = (await connect(mongod.getUri())).connection;
     profileModel = mongoConnection.model(Profile.name, ProfileSchema);
 
     const module: TestingModule = await Test.createTestingModule({
