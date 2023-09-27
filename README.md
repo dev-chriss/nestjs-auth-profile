@@ -1,16 +1,19 @@
 ## How to use
 
 ```bash
-# Install dependencies
+# install dependencies
 $ npm install
 
-# development
+# copy .env.exampple to .env and fill the env settings
+$ cp .env.example .env
+
+# run on development
 $ npm run start
 
-# watch mode
+# run on watch mode
 $ npm run start:dev
 
-# production mode
+# run on production mode
 $ npm run start:prod
 ```
 
@@ -20,7 +23,7 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# unit tests for development mode
+# unit tests on development mode
 $ npm run test:watch
 ```
 
