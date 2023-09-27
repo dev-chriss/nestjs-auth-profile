@@ -46,12 +46,12 @@ $ docker-compose -d
 Application running at http://localhost:3000
 
 
-## REST API DESIGN
+## Rest API design
 
 ```
-get     /api/docs              	 	    swagger
-post    /api/login              	 	login
-post    /api/register            	    register
+get     /api/docs                       swagger
+post    /api/login                      login with email/username
+post    /api/register                   register new user
 
 get     /api/getProfile/:id             get a profile
 post    /api/createProfile              create a profile
