@@ -31,6 +31,9 @@ $ npm run test
 $ npm run test:watch
 ```
 
+unit test example is at /src/profiles/profiles.controller.spec.ts
+
+
 
 ## Running the app with Docker
 
