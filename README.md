@@ -6,20 +6,6 @@ Install dependencies
 $ npm install
 ```
 
-Run docker container in development mode
-
-```bash
-$ docker-compose up
-```
-
-Create and run docker container on production
-
-```bash
-$ docker build -t app-name . && docker run app-name -p 8080:3000
-```
-
-## Running the app without Docker
-
 ```bash
 # development
 $ npm run start
@@ -40,3 +26,18 @@ $ npm run test
 # unit tests for development mode
 $ npm run test:watch
 ```
+
+## Running the app with Docker
+
+Run docker container in development mode
+
+```bash
+$ docker-compose up
+```
+
+Create and run docker container on production
+
+```bash
+$ docker build -t app-name . && docker run app-name -p 8080:3000
+```
+
