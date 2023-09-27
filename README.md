@@ -49,11 +49,11 @@ Application running at http://localhost:3000
 ## REST API DESIGN
 
 ```
-    post   /api/docs              	 	    swagger
-    post   /api/login              	 	    login
-    delete /api/register            	 	register
-    
-    get    /api/getProfile/:id              hecklist index
-    post   /api/createProfile              	create a profile
-    put    /api/updateProfile/:id           update a profile
+post   /api/docs              	 	    swagger
+post   /api/login              	 	    login
+delete /api/register            	 	register
+
+get    /api/getProfile/:id              get a profile
+post   /api/createProfile              	create a profile
+put    /api/updateProfile/:id           update a profile
 ```
