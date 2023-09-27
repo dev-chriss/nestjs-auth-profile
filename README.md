@@ -9,12 +9,6 @@ $ npm install
 Run docker container in development mode
 
 ```bash
-$ npm run docker:dev
-```
-
-or
-
-```bash
 $ docker-compose up
 ```
 
@@ -43,9 +37,6 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# unit tests for development mode
+$ npm run test:watch
 ```
