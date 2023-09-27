@@ -3,7 +3,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 
-const PORT = parseInt(process.env.PORT, 10) || 3000;
+const APP_PORT = parseInt(process.env.APP_PORT, 10) || 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,7 +19,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  await app.listen(PORT);
-  console.log(`🚀 Application running at port ${PORT}`);
+  await app.listen(APP_PORT);
+  console.log(`🚀 Application running at port ${APP_PORT}`);
 }
 bootstrap();

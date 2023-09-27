@@ -17,6 +17,10 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+Application running at http://localhost:3000
+
+
+
 ## Test
 
 ```bash
@@ -27,16 +31,13 @@ $ npm run test
 $ npm run test:watch
 ```
 
+
 ## Running the app with Docker
 
-Run docker container in development mode
+Run docker container
 
 ```bash
-$ docker-compose up
+$ docker-compose -d
 ```
 
-Create and run docker container on production
-
-```bash
-$ docker build -t app-name . && docker run app-name -p 8080:3000
-```
+Application running at http://localhost:3000
