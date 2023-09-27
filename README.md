@@ -1,12 +1,9 @@
 ## How to use
 
-Install dependencies
-
 ```bash
+# Install dependencies
 $ npm install
-```
 
-```bash
 # development
 $ npm run start
 
@@ -40,4 +37,3 @@ Create and run docker container on production
 ```bash
 $ docker build -t app-name . && docker run app-name -p 8080:3000
 ```
-
