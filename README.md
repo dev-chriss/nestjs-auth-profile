@@ -31,7 +31,7 @@ $ npm run test
 $ npm run test:watch
 ```
 
-unit test example is at /src/profiles/profiles.controller.spec.ts
+unit test example is at `/src/profiles/profiles.controller.spec.ts`
 
 
 
@@ -44,3 +44,16 @@ $ docker-compose -d
 ```
 
 Application running at http://localhost:3000
+
+
+## REST API DESIGN
+
+```
+    post   /api/docs              	 	    swagger
+    post   /api/login              	 	    login
+    delete /api/register            	 	register
+    
+    get    /api/getProfile/:id              hecklist index
+    post   /api/createProfile              	create a profile
+    put    /api/updateProfile/:id           update a profile
+```
