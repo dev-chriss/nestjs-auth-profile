@@ -1,4 +1,3 @@
-import { Types } from 'mongoose';
 import {
   IsArray,
   IsInt,
@@ -15,7 +14,7 @@ export class CreateProfileDto {
     description: 'UserId / Owner of this profile',
   })
   @IsNotEmpty()
-  readonly userId: Types.ObjectId;
+  readonly userId: string;
 
   @IsNotEmpty()
   readonly displayName: string;
