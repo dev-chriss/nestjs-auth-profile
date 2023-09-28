@@ -60,17 +60,6 @@ describe('AuthController', () => {
   });
 
   describe('login', () => {
-    /* it('should return the corresponding user and token', async () => {
-      const loginDtoStub: LoginDto = {
-        keyword: 'user1',
-        password: '1234',
-      };
-
-      await authController.register(createUserDtoStub);
-      const user = await authController.login(loginDtoStub);
-      expect(user.username).toEqual(loginDtoStub.keyword);
-    }); */
-
     it('should return Username or Email is not found', async () => {
       try {
         await authController.register(createUserDtoStub);

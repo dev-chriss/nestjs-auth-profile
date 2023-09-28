@@ -40,7 +40,11 @@ export class AuthService {
     return this.usersService.createUser(createUserDto);
   }
 
-  async findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+  testJwt() {
+    return 'success';
   }
+
+  /* async findAll(): Promise<User[]> {
+    return this.usersService.findAll();
+  } */
 }

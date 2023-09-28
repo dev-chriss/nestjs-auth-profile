@@ -29,10 +29,13 @@ $ npm run test
 
 # unit tests on development mode
 $ npm run test:watch
+
+# e2e tests
+$ npm run test:e2e
 ```
 
 unit test example is at `/src/profiles/profiles.controller.spec.ts`
-
+jwt test example is at `/src/test/app.e2e-spec.ts`
 
 
 ## Running the app with Docker
