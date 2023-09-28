@@ -34,8 +34,21 @@ $ npm run test:watch
 $ npm run test:e2e
 ```
 
-unit test example is at `/src/profiles/profiles.controller.spec.ts`
+unit test example is at `/src/profiles/profiles.controller.spec.ts`<br>
 jwt test example is at `/src/test/app.e2e-spec.ts`
+
+
+## Rest API design
+
+```
+get     /api/docs                       swagger documents
+post    /api/login                      login with email/username
+post    /api/register                   register new user
+
+get     /api/getProfile/:id             get a profile
+post    /api/createProfile              create a profile
+put     /api/updateProfile/:id          update a profile
+```
 
 
 ## Running the app with Docker
@@ -47,16 +60,3 @@ $ docker-compose -d
 ```
 
 Application running at http://localhost:3000
-
-
-## Rest API design
-
-```
-get     /api/docs                       swagger
-post    /api/login                      login with email/username
-post    /api/register                   register new user
-
-get     /api/getProfile/:id             get a profile
-post    /api/createProfile              create a profile
-put     /api/updateProfile/:id          update a profile
-```
