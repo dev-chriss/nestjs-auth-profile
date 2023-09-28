@@ -58,5 +58,3 @@ Run docker container
 ```bash
 $ docker-compose -d
 ```
-
-Application running at http://localhost:3000
