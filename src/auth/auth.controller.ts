@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Post, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Post, HttpStatus, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public } from './auth.decorator';
 import { CreateUserDto } from '../users/dto/create-user.dto';
@@ -23,4 +23,10 @@ export class AuthController {
   register(@Body() createUserDto: CreateUserDto) {
     return this.authService.register(createUserDto);
   }
+
+  /*
+  @Get('getUsers')
+  findAll() {
+    return this.authService.findAll();
+  } */
 }

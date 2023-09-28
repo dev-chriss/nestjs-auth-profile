@@ -41,4 +41,9 @@ export class UsersService {
       throw new BadRequestException(err.message);
     }
   }
+
+  async findAll(): Promise<User[]> {
+    const users = await this.userModel.find();
+    return users;
+  }
 }

@@ -39,4 +39,8 @@ export class AuthService {
   async register(createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.createUser(createUserDto);
   }
+
+  async findAll(): Promise<User[]> {
+    return this.usersService.findAll();
+  }
 }
