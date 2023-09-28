@@ -60,5 +60,5 @@ get     /api/getImage                   get profile photo
 Run docker container
 
 ```bash
-$ docker-compose -d
+$ docker-compose up -d
 ```
