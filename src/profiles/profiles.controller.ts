@@ -47,9 +47,4 @@ export class ProfilesController {
   update(@Param() id: string, @Body() updateProfileDto: UpdateProfileDto) {
     return this.profilesService.updateByUserId(id, updateProfileDto);
   }
-
-  /* @Get('getProfiles')
-  findAll() {
-    return this.profilesService.findAll();
-  } */
 }

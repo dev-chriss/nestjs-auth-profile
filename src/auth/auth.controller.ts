@@ -41,10 +41,4 @@ export class AuthController {
   testJwt() {
     return this.authService.testJwt();
   }
-
-  /*
-  @Get('getUsers')
-  findAll() {
-    return this.authService.findAll();
-  } */
 }

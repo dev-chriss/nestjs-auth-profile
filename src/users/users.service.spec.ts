@@ -8,7 +8,6 @@ describe('UsersService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      // providers: [UsersService],
       providers: [
         UsersService,
         { provide: getModelToken(User.name), useValue: jest.fn() },
