@@ -4,7 +4,7 @@
 .dockerignore
 
 # Build dependencies
-dist
+# dist
 node_modules
 coverage
 
