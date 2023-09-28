@@ -8,12 +8,18 @@ import {
   UseInterceptors,
   StreamableFile,
   Header,
-  Body,
+  Param,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Public } from './auth/auth.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiBearerAuth, ApiBody, ApiConsumes } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiParam,
+  ApiResponse,
+} from '@nestjs/swagger';
 import { multerOptions } from './utils/uploadImage';
 import { createReadStream } from 'fs';
 import { join } from 'path';
@@ -51,22 +57,22 @@ export class AppController {
   }
 
   @ApiBearerAuth()
-  @ApiBody({
+  @ApiParam({
+    name: 'imageFilename',
+    required: true,
+    description: 'Image file name',
+  })
+  @ApiResponse({
+    status: 200,
     schema: {
-      type: 'object',
-      properties: {
-        imageFilename: {
-          type: 'string',
-          description: `The image to upload [jpg|jpeg|png|gif]. Max size: 1 MB`,
-        },
-      },
-      example: { imageFilename: 'youapp.png' },
+      type: 'string',
+      format: 'binary',
     },
   })
-  @Get('getImage')
-  @Header('content-type', 'image/jpeg')
+  @Get('getImage/:imageFilename')
+  @Header('content-type', 'image/png')
   @HttpCode(HttpStatus.OK)
-  getImage(@Body() payload: any): any {
+  getImage(@Param() payload: any): any {
     return new StreamableFile(
       createReadStream(
         join(process.cwd(), 'public/img', payload.imageFilename),

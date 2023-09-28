@@ -43,15 +43,15 @@ jwt test example is at `/test/app.e2e-spec.ts`
 ## Rest API design
 
 ```
-get     /api/docs                       swagger documents
-post    /api/login                      login with email/username
-post    /api/register                   register new user
+get     /api/docs                           swagger documents
+post    /api/login                          login with email/username
+post    /api/register                       register new user
 
-get     /api/getProfile/:id             get a profile
-post    /api/createProfile              create a profile
-put     /api/updateProfile/:id          update a profile
-post    /api/uploadImage                upload profile photo
-get     /api/getImage                   get profile photo
+get     /api/getProfile/:id                 get a profile
+post    /api/createProfile                  create a profile
+put     /api/updateProfile/:id              update a profile
+post    /api/uploadImage                    upload profile photo
+get     /api/getImage/:imageFilename        get profile photo
 ```
 
 
