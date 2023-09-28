@@ -19,6 +19,7 @@ const createProfileDtoStub: CreateProfileDto = {
   birthday: '1995/6/28',
   zodiac: 'Cancer',
   horoscope: '',
+  imageFilename: '',
   interests: [],
 };
 
@@ -109,6 +110,7 @@ describe('ProfilesController', () => {
       birthday: '1995/6/28',
       zodiac: 'Cancer',
       horoscope: '',
+      imageFilename: '',
       interests: [],
     };
 

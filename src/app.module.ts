@@ -7,7 +7,6 @@ import { AppService } from './app.service';
 import { ProfilesModule } from './profiles/profiles.module';
 import { UserModule } from './users/users.module';
 import { AuthService } from './auth/auth.service';
-// import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -33,7 +32,6 @@ import { join } from 'path';
     UserModule,
     AuthModule,
   ],
-  // controllers: [AppController, AuthController],
   controllers: [AppController],
   providers: [
     AppService,

@@ -38,6 +38,7 @@ export class AppController {
         file: {
           type: 'string',
           format: 'binary',
+          description: `The image to upload [jpg|jpeg|png|gif]. Max size: 1 MB`,
         },
       },
     },
@@ -50,6 +51,18 @@ export class AppController {
   }
 
   @ApiBearerAuth()
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        imageFilename: {
+          type: 'string',
+          description: `The image to upload [jpg|jpeg|png|gif]. Max size: 1 MB`,
+        },
+      },
+      example: { imageFilename: 'youapp.png' },
+    },
+  })
   @Get('getImage')
   @Header('content-type', 'image/jpeg')
   @HttpCode(HttpStatus.OK)

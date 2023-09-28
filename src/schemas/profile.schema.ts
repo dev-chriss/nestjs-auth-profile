@@ -39,6 +39,9 @@ export class Profile {
 
   @Prop({ required: false, default: [] })
   interests: string[];
+
+  @Prop({ required: false, default: '' })
+  imageFilename: string;
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);

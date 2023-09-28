@@ -1,5 +1,5 @@
 /public/img/*.*
-
+!/public/img/youapp.png
 # environment
 .env
 

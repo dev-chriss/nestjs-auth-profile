@@ -78,6 +78,14 @@ export class CreateProfileDto {
   readonly horoscope: string;
 
   @ApiProperty({
+    type: String,
+    description: `if want empty string you can use 'imageFilename: ""'`,
+    example: '',
+  })
+  @IsString() // still allowed empty string
+  readonly imageFilename: string;
+
+  @ApiProperty({
     type: Array,
     description: `if want empty array you can use [] as value`,
     example: [],
