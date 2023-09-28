@@ -42,6 +42,10 @@ export class UsersService {
     }
   }
 
+  async removeByUsername(username: string) {
+    return this.userModel.findOneAndRemove({ username: username });
+  }
+
   async findAll(): Promise<User[]> {
     const users = await this.userModel.find();
     return users;

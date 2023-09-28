@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Post, HttpStatus, Get, HttpCode } from '@nestjs/common';
+import { Body, Controller, Post, HttpStatus, Get, HttpCode, Delete } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public } from './auth.decorator';
 import { CreateUserDto } from '../users/dto/create-user.dto';
@@ -25,7 +25,18 @@ export class AuthController {
     return this.authService.register(createUserDto);
   }
 
+  /* just for testing */
   @ApiExcludeEndpoint()
+  @Public()
+  @HttpCode(200)
+  @Delete('removeUser')
+  removeUser(@Body() payload: any) {
+    return this.authService.removeUser(payload.username);
+  }
+
+  /* just for testing */
+  @ApiExcludeEndpoint()
+  @HttpCode(200)
   @Get('testJwt')
   testJwt() {
     return this.authService.testJwt();

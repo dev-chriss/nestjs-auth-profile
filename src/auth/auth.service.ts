@@ -40,6 +40,12 @@ export class AuthService {
     return this.usersService.createUser(createUserDto);
   }
 
+  /* just for testing */
+  async removeUser(username: string): Promise<any> {
+    return await this.usersService.removeByUsername(username);
+  }
+
+  /* just for testing */
   testJwt() {
     return 'success';
   }
