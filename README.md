@@ -48,6 +48,8 @@ post    /api/register                   register new user
 get     /api/getProfile/:id             get a profile
 post    /api/createProfile              create a profile
 put     /api/updateProfile/:id          update a profile
+post    /api/uploadImage                upload profile photo
+get     /api/getImage                   get profile photo
 ```
 
 

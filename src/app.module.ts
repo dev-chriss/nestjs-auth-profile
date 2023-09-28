@@ -10,6 +10,8 @@ import { AuthService } from './auth/auth.service';
 // import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -23,6 +25,9 @@ import { AuthGuard } from './auth/auth.guard';
         username: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASS,
       },
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..'),
     }),
     ProfilesModule,
     UserModule,

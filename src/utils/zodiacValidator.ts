@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-
 const getZodiacSign = (dateString: string): string => {
   const date = new Date(dateString);
   const month = date.toLocaleString('default', { month: 'long' });
@@ -58,7 +57,5 @@ const getZodiacSign = (dateString: string): string => {
 
 // parameter dateString with format ISO YYYY-MM-DD
 export const checkZodiac = (dateString: string, zodiac: string): boolean => {
-  const res = getZodiacSign(dateString);
-  if (res && res === zodiac) return true;
-  return false;
+  return getZodiacSign(dateString) === zodiac;
 };

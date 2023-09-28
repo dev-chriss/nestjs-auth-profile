@@ -56,7 +56,6 @@ export class ProfilesService {
       throw new BadRequestException(err.message);
     }
   }
-
   async create(createProfileDto: CreateProfileDto): Promise<Profile> {
     try {
       // assume backend will receive zodiac field from frontend, we need to validate

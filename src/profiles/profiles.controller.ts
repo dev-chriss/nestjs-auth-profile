@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -21,7 +20,7 @@ export class ProfilesController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'UserId / Owner of this profile', 
+    description: 'UserId / Owner of this profile',
   })
   @ApiResponse({ status: HttpStatus.OK, description: `return profile data` })
   @Get('getProfile/:id')
@@ -30,7 +29,10 @@ export class ProfilesController {
   }
 
   @ApiBearerAuth()
-  @ApiResponse({ status: HttpStatus.CREATED, description: `return profile data` })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: `return profile data`,
+  })
   @Post('createProfile')
   create(@Body() createProfileDto: CreateProfileDto) {
     return this.profilesService.create(createProfileDto);
@@ -40,7 +42,7 @@ export class ProfilesController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'UserId / Owner of this profile', 
+    description: 'UserId / Owner of this profile',
   })
   @ApiResponse({ status: HttpStatus.OK, description: `return profile data` })
   @Put('updateProfile/:id')
