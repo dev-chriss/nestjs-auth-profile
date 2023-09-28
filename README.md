@@ -1,3 +1,5 @@
+Nestjs with JWT Token, DTO, validations, unit tests, upload and serve image, swagger
+
 ## How to use
 
 ```bash
@@ -35,7 +37,7 @@ $ npm run test:e2e
 ```
 
 unit test example is at `/src/profiles/profiles.controller.spec.ts`<br>
-jwt test example is at `/src/test/app.e2e-spec.ts`
+jwt test example is at `/test/app.e2e-spec.ts`
 
 
 ## Rest API design
