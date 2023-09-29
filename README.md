@@ -54,7 +54,7 @@ post    /api/uploadImage                    upload profile photo
 get     /api/getImage/:imageFilename        get profile photo
 ```
 
-
+<!---
 ## Running the app with Docker
 
 Run docker container
@@ -62,3 +62,4 @@ Run docker container
 ```bash
 $ docker-compose up -d
 ```
+-->
