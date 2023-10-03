@@ -1,4 +1,4 @@
-Nestjs with MongoDB, JWT Token, DTO, validations, unit tests, upload and serve image, swagger
+Nestjs with MongoDB, JWT Token, CRUD, DTO, validations, unit tests, upload and serve image, swagger
 
 ## How to use
 
